@@ -1,0 +1,110 @@
+<html>
+<head>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
+  <style>
+    /* Custom styles to complement the existing layout */
+    .contact-container {
+        display: flex;
+        justify-content: space-around;
+        padding: 40px;
+        flex-wrap: wrap;
+    }
+    .contact-info-section {
+        flex: 1;
+        min-width: 300px;
+        padding: 20px;
+    }
+    .form-section {
+        flex: 1;
+        min-width: 300px;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+    }
+    .contact-method {
+        margin-bottom: 20px;
+    }
+    .contact-method strong {
+        color: darkturquoise;
+        display: block;
+        font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height: 1in;">
+    <div class="container-fluid">
+      <h2 style="padding-right: 5%;">Dealerships</h2>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" style="font-size: larger;" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="font-size: larger;" href="/about">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" style="font-size: larger;" href="/contact">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="card" style="width: 80%; margin: auto; margin-top: 5%; margin-bottom: 5%;">
+    <div class="banner" name="contact-header" style="padding: 20px; border-bottom: 1px solid #ddd;">
+      <h1>Contact Us</h1>
+      <p>Have questions about our inventory or want to schedule a test drive? Reach out to the Best Cars team today.</p>
+    </div>
+
+    <div class="contact-container">
+      <div class="contact-info-section">
+        <h3>Get In Touch</h3>
+        <hr>
+        <div class="contact-method">
+          <strong>Visit Our Showroom</strong>
+          <p>123 Auto Drive, Motor City, MI 48126<br>North America</p>
+        </div>
+        
+        <div class="contact-method">
+          <strong>Phone & Fax</strong>
+          <p>Main: (888) 123-4567<br>Sales: (888) 987-6543</p>
+        </div>
+
+        <div class="contact-method">
+          <strong>Email</strong>
+          <p>inquiries@bestcars.com<br>support@bestcars.com</p>
+        </div>
+
+        <div class="contact-method">
+          <strong>Business Hours</strong>
+          <p>Mon - Fri: 9:00 AM - 8:00 PM<br>Sat: 10:00 AM - 6:00 PM<br>Sun: Closed</p>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3>Send a Message</h3>
+        <form>
+          <div class="mb-3">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-control" placeholder="John Doe">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-control" placeholder="name@example.com">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Message</label>
+            <textarea class="form-control" rows="4" placeholder="How can we help you?"></textarea>
+          </div>
+          <button type="submit" class="btn" style="background-color: darkturquoise; color: white; width: 100%;">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
