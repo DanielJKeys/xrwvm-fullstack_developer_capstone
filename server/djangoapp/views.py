@@ -65,30 +65,42 @@ def registration(request):
     else:
         return JsonResponse({"userName": username, "error": "Already Registered"})
 
-# Update the `get_dealerships` view to render the index page with a list of dealerships
-# Note: This usually interfaces with a backend service or your local DB
+# Update the `get_dealerships` view to fetch actual data
 def get_dealerships(request, state="All"):
     if state == "All":
-        # Placeholder for actual database call or external API call
-        # dealerships = get_dealers_from_cf() 
-        return HttpResponse("List of all dealerships") # Replace with render() or JsonResponse()
+        endpoint = "/fetchDealers"
     else:
-        # dealerships = get_dealers_by_state_from_cf(state)
-        return HttpResponse(f"List of dealerships in {state}")
+        endpoint = "/fetchDealers/" + state
+    
+    dealerships = get_request(endpoint)
+    
+    if isinstance(dealerships, dict) and "dealerships" in dealerships:
+        return JsonResponse(dealerships["dealerships"], safe=False)
+    
+    # Otherwise return as is
+    return JsonResponse(dealerships, safe=False)
 
-# Create a `get_dealer_reviews` view to render the reviews of a dealer
+# Create a `get_dealer_reviews` view with sentiment analysis
 def get_dealer_reviews(request, dealer_id):
     if dealer_id:
-        # reviews = get_dealer_reviews_from_cf(dealer_id)
-        return JsonResponse({"status": 200, "reviews": []}) # Replace with actual data
+        endpoint = "/fetchReviews/dealer/" + str(dealer_id)
+        reviews = get_request(endpoint)
+        
+        # Analyze sentiment for each review before returning
+        for review_detail in reviews:
+            response = analyze_review_sentiments(review_detail['review'])
+            review_detail['sentiment'] = response['sentiment']
+            
+        return JsonResponse(reviews, safe=False)
     else:
         return JsonResponse({"status": 400, "message": "Bad Request"})
 
 # Create a `get_dealer_details` view to render the dealer details
 def get_dealer_details(request, dealer_id):
     if dealer_id:
-        # dealer = get_dealer_by_id_from_cf(dealer_id)
-        return JsonResponse({"status": 200, "dealer": {}}) # Replace with actual data
+        endpoint = "/fetchDealer/" + str(dealer_id)
+        dealer = get_request(endpoint)
+        return JsonResponse(dealer, safe=False)
     else:
         return JsonResponse({"status": 400, "message": "Bad Request"})
 
@@ -104,3 +116,4 @@ def add_review(request):
             return JsonResponse({"status": 401, "message": "Error in posting review"})
     else:
         return JsonResponse({"status": 403, "message": "Unauthorized"})
+

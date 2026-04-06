@@ -2,6 +2,7 @@
   "name": "usermgmt",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://danieljkeys5-8000.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
