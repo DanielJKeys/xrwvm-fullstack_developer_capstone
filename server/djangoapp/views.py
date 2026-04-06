@@ -5,6 +5,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import logout, login, authenticate
 from django.contrib import messages
 from datetime import datetime
+from .restapis import get_request, analyze_review_sentiments, post_review
 
 from django.http import JsonResponse
 import logging
